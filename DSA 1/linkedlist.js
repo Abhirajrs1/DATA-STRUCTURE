@@ -10,13 +10,17 @@ class LinkedList{
       this.head=null
       this.size=0
     }
-
+    
+    // check for the list is empty
     isEmpty(){
         return this.size==0
     }
+    // getting the current size
     getSize(){
         return this.size
     }
+
+    // Insert from the head
     prepend(value){
        const node=new Node(value)
        if(this.isEmpty()){
@@ -28,6 +32,8 @@ class LinkedList{
        }
        this.size++
     }
+
+    // Insert from the tail
     append(value){
         const node=new Node(value)
         if(this.isEmpty()){
@@ -41,6 +47,8 @@ class LinkedList{
         }
         this.size++
     }
+
+    // Imsertion on specific index
     insert(value,index){
         if(index<0||index>this.size){
             return console.log("Invalid");
@@ -59,6 +67,8 @@ class LinkedList{
             this.size++ 
         }
     }
+
+    // Remove according to index
     removeFrom(index){
         if(index<0 || index>=this.size){
             return null
@@ -78,6 +88,8 @@ class LinkedList{
         this.size--
         return removeNode.value
     }
+
+    // Remove according to value
     removeValue(value){
         if(this.isEmpty()){
             return null
@@ -100,6 +112,8 @@ class LinkedList{
                 return null
         }
     }
+
+    // Search values in the list
     search(value){
         if(this.isEmpty()){
             return -1      
@@ -115,6 +129,21 @@ class LinkedList{
         }
         return -1
     }
+
+    // Reverse a list
+    reverse(){
+        let prev=null
+        let current=this.head
+        while(current){
+            let next=current.next
+            current.next=prev
+            prev=current
+            current=next
+        }
+        this.head=prev
+    }
+
+    // Print the list
     print(){
         if(this.isEmpty()){
             console.log("List is empty");
@@ -133,6 +162,7 @@ class LinkedList{
 const list=new LinkedList()
 console.log(list.isEmpty());
 console.log(list.getSize());
+
 list.prepend(10)
 list.prepend(20)
 list.prepend(30)
@@ -140,16 +170,16 @@ list.append(100)
 list.append(200)
 list.append(400)
 list.append(500)
-
-console.log(list.getSize());
 list.print()
 
 list.insert(40,0)
 list.print()
-list.insert(80,2)
-list.print()
+
 console.log( list.removeFrom(4));
 list.print()
 
 console.log( list.removeValue(1000)); 
+list.print()
+
+list.reverse()
 list.print()
