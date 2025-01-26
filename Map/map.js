@@ -13,3 +13,7 @@ for(let [key,value] of map){
 map.forEach((value,key )=> {
     console.log(` Key : ${key}, Value : ${value}`)
 });
+
+console.log(map.get('name')) //Retrieve the value from map using key
+console.log((map.has('name')));  //Check the key existing in the map
+
